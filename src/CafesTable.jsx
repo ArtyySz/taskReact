@@ -8,9 +8,13 @@ export default function CafesTable() {
 
     useEffect(() => {
         axios
-            .get("/cafes")
-            .then((response) => setData(response.data))
-            .catch((error) => console.error("Ошибка:", error));
+            .get("http://localhost:8070/cafes")
+            .then((response) => {
+                setData(response.data.cafes);
+            })
+            .catch((error) => {
+                console.error("Ошибка:", error);
+            });
     }, []);
 
     const filteredData =
